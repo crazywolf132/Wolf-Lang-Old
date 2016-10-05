@@ -3,21 +3,14 @@
 # This is the world's first (I think) implementation of the
 #
 # Wolf Lang
-#
-# You know, like Hex, but with evil beings! Written in Python to offset the evil a bit.
-#
-# Evil necromancers might want to go here:
-#  http://www.dangermouse.net/esoteric/zombie.html
-# to read the specification, which was made over two years ago, and still nobody
-# dared implement it.
 
 
 import re,sys,thread,time,random
 
 # regexps recognizing syntax elements
 comment_re = re.compile("\{.*?\}", re.DOTALL)
-declaration_re = re.compile(r'([A-Za-z0-9_\-]*?)\s+is\s+an?\s+(wolf|enslaved undead|' + \
-                            r'alpha|restless undead|beta|free-willed undead' + \
+declaration_re = re.compile(r'([A-Za-z0-9_\-]*?)\s+is\s+an?\s+(wolf|wild animal|' + \
+                            r'alpha|top dog|beta|second in charge' + \
                             r'|omega|pup)', re.I)
 
 task_re = re.compile("task\s+([A-Za-z0-9_-]*)", re.I)
@@ -178,9 +171,9 @@ class Task:
           'disturb': self.c_disturb,
           'forget': self.c_forget,
           'invoke': self.c_invoke,
-          'message': self.c_message,
+          'howl': self.c_howl,
           'remember': self.c_remember,
-          'howl': self.c_howl}
+          'say': self.c_say}
 
    # commands
    def c_act(self,stack):
@@ -225,7 +218,7 @@ class Task:
       else:
          self.entity.activate()
 
-   def c_message(self,stack):
+   def c_howl(self,stack):
       if stack and len(stack)>=1 and isinstance(stack[-1],Entity):
          #sys.stdout.write(str(stack[-1].memory))
          stack.append(stack.pop().memory)
@@ -265,9 +258,9 @@ class Task:
 
       theEntity.memory = total
 
-   def c_howl(self, stack):
+   def c_say(self, stack):
       if not stack or (isinstance(stack[0],Entity) and len(stack)==1):
-         die("task %s, entity %s: argument error for HOWL: nothing to howl." % \
+         die("task %s, entity %s: argument error for SAY: nothing to say." % \
              (self.name,self.entity.name))
       if isinstance(stack[0],Entity):
          sys.stdout.write(str(stack[1]))
@@ -291,7 +284,7 @@ class Task:
 
          for cmd in reversed(cmds):
             if cmd.lower() in ['act', 'banish', 'disturb', 'forget',
-                               'invoke', 'message', 'remember', 'howl']:
+                               'invoke', 'howl', 'remember', 'say']:
                self.commands[cmd.lower()](stack)
             elif cmd.lower() == "remembering":
                if len(stack)>=1:
@@ -446,9 +439,9 @@ class Environment:
                   if a.group(1) in self.entities:
                      die("line %d: entity '%s' is already defined." % (line_no, a.group(1)))
 
-                  if a.group(2).lower() in ['wolf', 'enslaved undead']: type=Wolf
-                  elif a.group(2).lower() in ['alpha', 'restless undead']: type=Alpha
-                  elif a.group(2).lower() in ['beta', 'free-willed undead']: type=Beta
+                  if a.group(2).lower() in ['wolf', 'wild animal']: type=Wolf
+                  elif a.group(2).lower() in ['alpha', 'top dog']: type=Alpha
+                  elif a.group(2).lower() in ['beta', 'second in charge']: type=Beta
                   elif a.group(2).lower() == 'omega': type=Omega
                   elif a.group(2).lower() == 'pup': type=Pup
                   else:
