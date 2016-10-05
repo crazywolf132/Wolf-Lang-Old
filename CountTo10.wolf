@@ -1,0 +1,47 @@
+Number1 is a wolf
+ASK
+      remember 1
+BIND
+
+Number2 is a wolf
+ASK
+      remember 2
+BIND
+
+Number3 is a wolf
+ASK
+      remember 0
+BIND
+
+Echo is a  wolf
+ASK
+      task print
+                howl message Number1
+                howl message Number2
+                remember Number1 message Number2 message Number1
+                howl message Number1
+                remember Number2 message Number2 message Number2
+                howl message Number2
+                forget Number1
+                remember Number1 message 1
+                remember Number2 message Number2 message Number1
+                howl message Number2
+                remember Number1 message Number2 message Number1
+                howl message Number1
+                forget Number2
+                remember Number2 message 1
+                remember Number2 message Number1 message Number2
+                howl message Number2
+                forget Number2
+                remember Number2 message 2
+                remember Number2 message Number2 message Number1
+                howl message Number2
+                remember Number3 message 2
+                remember Number2 message 1
+                remember Number1 message Number3 message Number1 message Number2
+                howl message Number1
+                remember Number2 message 8
+                remember Number2 message Number2 message Number3
+                howl message Number2
+      ACT
+ACT
