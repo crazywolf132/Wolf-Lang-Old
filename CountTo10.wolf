@@ -16,32 +16,32 @@ BIND
 Echo is a  wolf
 ASK
       task print
-                howl message Number1
-                howl message Number2
-                remember Number1 message Number2 message Number1
-                howl message Number1
-                remember Number2 message Number2 message Number2
-                howl message Number2
+                say howl Number1
+                say howl Number2
+                remember Number1 howl Number2 howl Number1
+                say howl Number1
+                remember Number2 howl Number2 howl Number2
+                say howl Number2
                 forget Number1
-                remember Number1 message 1
-                remember Number2 message Number2 message Number1
-                howl message Number2
-                remember Number1 message Number2 message Number1
-                howl message Number1
+                remember Number1 howl 1
+                remember Number2 howl Number2 howl Number1
+                say howl Number2
+                remember Number1 howl Number2 howl Number1
+                say howl Number1
                 forget Number2
-                remember Number2 message 1
-                remember Number2 message Number1 message Number2
-                howl message Number2
+                remember Number2 howl 1
+                remember Number2 howl Number1 howl Number2
+                say howl Number2
                 forget Number2
-                remember Number2 message 2
-                remember Number2 message Number2 message Number1
-                howl message Number2
-                remember Number3 message 2
-                remember Number2 message 1
-                remember Number1 message Number3 message Number1 message Number2
-                howl message Number1
-                remember Number2 message 8
-                remember Number2 message Number2 message Number3
-                howl message Number2
+                remember Number2 howl 2
+                remember Number2 howl Number2 howl Number1
+                say howl Number2
+                remember Number3 howl 2
+                remember Number2 howl 1
+                remember Number1 howl Number3 howl Number1 howl Number2
+                say howl Number1
+                remember Number2 howl 8
+                remember Number2 howl Number2 howl Number3
+                say howl Number2
       ACT
 ACT
