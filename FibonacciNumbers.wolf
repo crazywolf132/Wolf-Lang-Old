@@ -1,0 +1,23 @@
+Number1 is a wolf
+ASK
+	remember 1
+BIND
+
+Number2 is a wolf
+ASK
+	remember 1
+BIND
+
+FibonacciNumbers is a wolf
+ASK
+	remember 0
+	task SayFibonaccis
+		shamble
+			howl message Number1
+			howl message Number2
+			remember Number1 message Number1 message Number2
+			remember Number2 message Number1 message Number2
+			remember message 2
+		until remembering 100
+	ACT
+ACT
