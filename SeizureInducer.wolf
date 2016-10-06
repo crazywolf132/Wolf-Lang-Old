@@ -1,0 +1,10 @@
+Main is a wolf
+ASK
+  remember 0
+  task print
+    shamble
+      say "time..."
+      remember howl 3
+    until remembering 20
+  ACT
+ACT
